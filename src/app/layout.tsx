@@ -1,6 +1,36 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Noto_Serif_JP, Jost } from "next/font/google";
+import { LanguageProvider } from "@/lib/i18n";
 import "./globals.css";
+
+const restaurantSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "RESTAURANT VITRA NAGOYA",
+  description: "名古屋・千種区に佇むフレンチレストラン。旬の食材と生産者の想いを大切に、記憶に残る一皿をご提供いたします。",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "御棚町3-26",
+    addressLocality: "千種区",
+    addressRegion: "名古屋市",
+    postalCode: "464-0835",
+    addressCountry: "JP",
+  },
+  telephone: "+81-52-759-5511",
+  url: "https://nagoya.vitra.jp",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday"],
+      opens: "17:30",
+      closes: "20:30",
+    },
+  ],
+  servesCuisine: ["French", "Japanese French Fusion"],
+  priceRange: "¥¥¥¥",
+  currenciesAccepted: "JPY",
+  paymentAccepted: "Cash, Credit Card",
+};
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -49,7 +79,15 @@ export default function RootLayout({
       lang="ja"
       className={`${cormorant.variable} ${notoSerifJP.variable} ${jost.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col antialiased">
+        <LanguageProvider>{children}</LanguageProvider>
+      </body>
     </html>
   );
 }
