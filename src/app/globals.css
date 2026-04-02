@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ── Design tokens ─────────────────────────────── */
+@theme inline {
+  /* Colors */
+  --color-gold:        #AA894D;
+  --color-gold-light:  #C9A96E;
+  --color-gold-muted:  #7a6235;
+  --color-dark:        #0f0e0c;
+  --color-dark-2:      #1a1916;
+  --color-ivory:       #FAF8F4;
+  --color-ivory-2:     #F2EDE3;
+  --color-muted:       #8c7e6a;
+  --color-border:      #DABCA9;
+
+  /* Typography */
+  --font-heading: "Cormorant Garamond", "Georgia", serif;
+  --font-body:    "Noto Serif JP", "Georgia", serif;
+  --font-sans:    "Jost", "system-ui", sans-serif;
+
+  /* Spacing scale extensions */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+}
+
+/* ── Base styles ───────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAF8F4;
+  color: #1a1916;
+  font-family: "Noto Serif JP", "Georgia", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography utilities ──────────────────────── */
+.font-heading {
+  font-family: "Cormorant Garamond", "Georgia", serif;
+}
+.font-sans-ui {
+  font-family: "Jost", "system-ui", sans-serif;
+}
+
+/* ── Section divider ───────────────────────────── */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #AA894D 30%, #AA894D 70%, transparent);
+}
+
+/* ── Smooth image hover ────────────────────────── */
+.img-hover-zoom {
+  overflow: hidden;
+}
+.img-hover-zoom img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-hover-zoom:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Gold underline on headings ────────────────── */
+.gold-underline {
+  position: relative;
+  display: inline-block;
+}
+.gold-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 1px;
+  background-color: #AA894D;
+}
+
+/* ── Scroll fade-in animation ──────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Nav link hover ────────────────────────────── */
+.nav-link {
+  position: relative;
+  letter-spacing: 0.12em;
+  font-family: "Jost", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #FAF8F4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #AA894D;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover {
+  color: #C9A96E;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── Focus ring ────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #AA894D;
+  outline-offset: 3px;
+}
