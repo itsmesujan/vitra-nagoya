@@ -208,10 +208,13 @@ const ja = {
     backHome: 'トップへ戻る',
     sister: '姉妹店',
   },
-} as const
+}
+
+// Shape type derived from ja (widened — allows string values in en/fr)
+type TranslationShape = typeof ja
 
 // ─── English ────────────────────────────────────────────────────────────────
-const en: typeof ja = {
+const en: TranslationShape = {
   nav: {
     about: 'About',
     menu: 'Menu',

@@ -95,11 +95,6 @@ const GALLERY_ITEMS = [
   },
 ]
 
-export const metadata = {
-  title: 'GALLERY | RESTAURANT VITRA NAGOYA',
-  description: '名古屋・覚王山 RESTAURANT VITRA NAGOYAの料理・空間・イベントのギャラリー。',
-}
-
 export default function GalleryPage() {
   const { locale, t } = useLocale()
   const g = t.galleryPage
